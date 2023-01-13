@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TodayModel>
+@{
+    ViewData["Today"] = "Today";
+}
+@{
+    <div class="text-center">
+            <h1 style="background-color:wheat; color:lightseagreen" class="display-4"><b><ins>Сегодня @DateTime.Today.ToString().Substring(0,10)</ins></b></h1>
+            @foreach (var item in ViewBag.lstToday)
+            {
+            if (@item.sex.ToUpper() == "М") {
+            <tr><h2 style="color:Green"> @item.name </h2></tr>
+            }
+            else {<tr><h2 style="color:mediumvioletred"> @item.name </h2></tr>}
+            string s;
+            if (@item.sex.ToUpper() == "М") { s = "мужское имя - "; } else{ s = "женское имя - "; }
+            if (@item.origin == "происхождение неизвестно") { s = s+ @item.origin+" "; } else { s = s + "имеет " + @item.origin + " происхождение "; }
+            if (@item.denotation == "значение не определено") { s = s + @item.denotation; } else { s = s + "и означает " + @item.denotation; }
+            <tr><h3> @s </h3></tr>
+
+            if (@item.urlAdress == "источник в интернете не найден")
+            {
+                <tr><h6> "дополнительная информация отсутствует" </h6></tr>
+            }
+            else { 
+                  var link = @item.urlAdress;
+                  <tr><h6><a href="@link">подробности...</a></h6></tr>
+                  }
+            }
+    </div>
+}
+ 
+                   

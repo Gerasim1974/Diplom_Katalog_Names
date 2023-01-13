@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "namesInfo";
+}
+
+@{
+    string myStyle;
+    if (@ViewBag.namesInfo.sex == "М" || @ViewBag.namesInfo.sex == "м")
+    { myStyle = "color:blue"; }
+    else { myStyle = "color:mediumvioletred"; }
+
+    <h3 style = @myStyle> @ViewBag.namesInfo.name </h3>
+
+
+    string s;
+    if (@ViewBag.namesInfo.sex.ToUpper() == "М") { s = "мужское имя"; } else { s = "женское имя"; }
+      
+    <h5>@s</h5>
+    
+    if (@ViewBag.namesInfo.origin == "происхождение неизвестно") 
+       { s = @ViewBag.namesInfo.origin+" "; } 
+       else 
+        { s = "имеет " + @ViewBag.namesInfo.origin + " происхождение "; }
+    <h5>@s</h5>
+
+    if (@ViewBag.namesInfo.denotation == "значение не определено") 
+       { s = @ViewBag.namesInfo.denotation; } 
+       else 
+       { s = "означает " + @ViewBag.namesInfo.denotation; }
+    <h5>@s</h5>
+
+    <h6 style = @myStyle>ИМЕНИНЫ :</h6>
+    if (@ViewBag.namesInfo.angelDay.Count > 0)
+    {
+      @foreach (var item in ViewBag.namesInfo.angelDay)
+      {
+        <h6>@item</h6>
+      }
+    }
+
+    if (@ViewBag.namesInfo.urlAdress == "источник в интернете не найден")
+      {
+        <h6> "дополнительная информация отсутствует" </h6>
+      }
+     else { 
+           var link = @ViewBag.namesInfo.urlAdress;
+           <a href="@link"><h6>подробности...</h6></a>
+          }
+}
+

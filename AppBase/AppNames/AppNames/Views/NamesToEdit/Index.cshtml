@@ -1,0 +1,40 @@
+﻿@model NamesToEditModel
+@{
+    ViewData["NamesToEditModel"] = "NamesToEditModel";
+}
+@{
+     <h5>Предлагать изменения могут только авторизованные пользователи</h5>
+     <h5>Поле "Имя" - обязательное для заполнение </h5>
+     <h5>также обязательно должно быть заполнено хотябы</h5>
+     <h5>одно из полей: "ссылка на первоисточник (url)", "Суть изменений"</h5>
+
+     if (@Model.namesToEdit.sError.Length > 0)
+      {<h5 style="color:red">@Model.namesToEdit.sError</h5>}
+    if (@Model.namesToEdit.Success)
+    {
+    @using (Html.BeginForm("Index", "NamesToEdit", FormMethod.Post))
+    {
+    <p>
+                @Html.LabelFor(m=>m.namesToEdit.Name, "имя, для которого нужно внести изменения")
+                <br>
+                @Html.EditorFor(m=>m.namesToEdit.Name, "", Model.namesToEdit.Name, null) 
+    </p>
+    <p>
+                @Html.LabelFor(m=>m.namesToEdit.UrlAdress, "ссылка на первоисточник (url)")
+                <br>
+                @Html.EditorFor(m=>m.namesToEdit.UrlAdress, "", Model.namesToEdit.UrlAdress, new{@style = "width:500px;"})
+    </p>
+    <p>
+                @Html.LabelFor(m=>m.namesToEdit.Notice,"Суть изменений")
+                <br>
+                @Html.TextAreaFor(m=>m.namesToEdit.Notice, new{@style = "width:500px; Height:200px;"})
+    </p>
+    <p><input type="submit" value="Применить" /></p>
+        }
+    }
+        else
+        {
+            <h4>Авторизуйтесь для возможности предложить изменения</h4>
+        }
+      
+}

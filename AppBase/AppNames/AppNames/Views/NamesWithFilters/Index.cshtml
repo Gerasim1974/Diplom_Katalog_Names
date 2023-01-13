@@ -1,0 +1,40 @@
+﻿@model NamesWithFiltersModel
+@{
+     ViewData["NamesWithFiltersModel"] = "NamesWithFiltersModel";
+}
+@{
+    <h1 style="color:Green">Фильтры</h1>
+        @using (Html.BeginForm("Index", "NamesWithFilters", FormMethod.Post))
+    {    
+        <p>
+                    @Html.RadioButtonFor(m=>m.namesWithFilters.sex,"ж", Model.namesWithFilters.sex)
+                    @Html.LabelFor(m=>m.namesWithFilters.sex,"Женщина")
+                    @Html.RadioButtonFor(m=>m.namesWithFilters.sex,"м", Model.namesWithFilters.sex)
+                    @Html.LabelFor(m=>m.namesWithFilters.sex,"Мужчина")
+        </p>
+        <p>
+                    @Html.LabelFor(m=>m.namesWithFilters.origin, "происхождение") <br>
+                    @Html.DropDownListFor(m=>m.namesWithFilters.origin, 
+                              new SelectList(Model.namesWithFilters.OriginList), 
+                              Model.namesWithFilters.origin)
+        </p>
+        <p>
+                    @Html.LabelFor(m=>m.namesWithFilters.denotation, "толкование") <br>
+                    @Html.DropDownListFor(m=>m.namesWithFilters.denotation, 
+                              new SelectList(Model.namesWithFilters.DenotationList), 
+                              Model.namesWithFilters.denotation)
+        </p>
+        <p><input type="submit" value="Применить" /></p>
+    }
+
+    <tr><h2>Результат отбора</h2></tr>
+
+    char Simbol = 'А';
+
+    <ul>
+    @foreach (var item in Model.namesWithFilters.namesResult)
+    {        
+        <li> <a asp-area="" asp-controller="NamesInfo" asp-action="Index" asp-route-name=@item.name> @item.name </a> </li>
+    }
+    </ul>
+}

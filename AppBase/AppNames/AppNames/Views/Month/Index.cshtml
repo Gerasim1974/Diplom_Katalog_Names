@@ -1,0 +1,97 @@
+﻿@model IEnumerable<MonthModel>
+@{
+    ViewData["Month"] = "Month";
+}
+@{
+    int numbMonth = @ViewBag.lstNamesOfMonth[0].numbMonth;
+    string myStyleNow = "background-color:aquamarine";
+    string myStyle_1 = "background-color:aquamarine";
+    if (numbMonth == 1) { myStyle_1 = "background-color:coral"; myStyleNow = "background-color:aquamarine; color:mediumvioletred"; }
+    string myStyle_2 = "background-color:aquamarine";
+    if (numbMonth == 2) { myStyle_2 = "background-color:coral"; myStyleNow = "background-color:aquamarine; color:mediumvioletred"; }  
+    string myStyle_3 = "background-color:palegreen";
+    if (numbMonth == 3) { myStyle_3 = "background-color:coral"; myStyleNow = "background-color:palegreen; color:mediumvioletred"; }  
+    string myStyle_4 = "background-color:palegreen";
+    if (numbMonth == 4) { myStyle_4 = "background-color:coral"; myStyleNow = "background-color:palegreen; color:mediumvioletred"; } 
+    string myStyle_5 = "background-color:palegreen";
+    if (numbMonth == 5) { myStyle_5 = "background-color:coral"; myStyleNow = "background-color:palegreen; color:mediumvioletred"; } 
+    string myStyle_6 = "background-color:palegoldenrod";
+    if (numbMonth == 6) { myStyle_6 = "background-color:coral"; myStyleNow = "background-color:palegoldenrod; color:mediumvioletred"; } 
+    string myStyle_7 = "background-color:palegoldenrod";
+    if (numbMonth == 7) { myStyle_7 = "background-color:coral"; myStyleNow = "background-color:palegoldenrod; color:mediumvioletred"; } 
+    string myStyle_8 = "background-color:palegoldenrod";
+    if (numbMonth == 8) { myStyle_8 = "background-color:coral"; myStyleNow = "background-color:palegoldenrod; color:mediumvioletred"; } 
+    string myStyle_9 = "background-color:orange";
+    if (numbMonth == 9) { myStyle_9 = "background-color:coral"; myStyleNow = "background-color:orange; color:mediumvioletred"; } 
+    string myStyle_10 = "background-color:orange";
+    if (numbMonth == 10) { myStyle_10 = "background-color:coral"; myStyleNow = "background-color:orange; color:mediumvioletred"; } 
+    string myStyle_11 = "background-color:orange";
+    if (numbMonth == 11) { myStyle_11 = "background-color:coral"; myStyleNow = "background-color:orange; color:mediumvioletred"; } 
+    string myStyle_12 = "background-color:aquamarine";
+    if (numbMonth == 12) { myStyle_12 = "background-color:coral"; myStyleNow = "background-color:aquamarine; color:mediumvioletred"; }  
+
+    <div class="tab">
+      <a asp-area="" asp-controller="Month" asp-action="Index" asp-route-NumbMonth="1"> 
+       <button style=@myStyle_1; class="tablinks">Январь</button>
+      </a>
+      <a asp-area="" asp-controller="Month" asp-action="Index" asp-route-NumbMonth="2"> 
+       <button style=@myStyle_2; class="tablinks">Февраль</button>
+      </a>
+      <a asp-area="" asp-controller="Month" asp-action="Index" asp-route-NumbMonth="3"> 
+       <button style=@myStyle_3; class="tablinks">Март</button>
+      </a>
+      <a asp-area="" asp-controller="Month" asp-action="Index" asp-route-NumbMonth="4"> 
+       <button style=@myStyle_4; class="tablinks">Апрель</button>
+      </a>
+      <a asp-area="" asp-controller="Month" asp-action="Index" asp-route-NumbMonth="5"> 
+       <button style=@myStyle_5; class="tablinks">Май</button>
+      </a>
+      <a asp-area="" asp-controller="Month" asp-action="Index" asp-route-NumbMonth="6"> 
+       <button style=@myStyle_6; class="tablinks">Июнь</button>
+      </a>
+      <a asp-area="" asp-controller="Month" asp-action="Index" asp-route-NumbMonth="7"> 
+       <button style=@myStyle_7; class="tablinks">Июль</button>
+      </a>
+      <a asp-area="" asp-controller="Month" asp-action="Index" asp-route-NumbMonth="8"> 
+       <button style=@myStyle_8; class="tablinks">Август</button>
+      </a>
+      <a asp-area="" asp-controller="Month" asp-action="Index" asp-route-NumbMonth="9"> 
+       <button style=@myStyle_9; class="tablinks">Сентябрь</button>
+      </a>
+      <a asp-area="" asp-controller="Month" asp-action="Index" asp-route-NumbMonth="10"> 
+       <button style=@myStyle_10; class="tablinks">Октябрь</button>
+      </a>
+      <a asp-area="" asp-controller="Month" asp-action="Index" asp-route-NumbMonth="11"> 
+       <button style=@myStyle_11; class="tablinks">Ноябрь</button>
+      </a>
+      <a asp-area="" asp-controller="Month" asp-action="Index" asp-route-NumbMonth="12"> 
+       <button style=@myStyle_12; class="tablinks">Декабрь</button>
+      </a>
+    </div>
+    
+    <tr><h2 style=@myStyleNow>@ViewBag.lstNamesOfMonth[0].captionMonth</h2></tr>
+
+    int i = 0;
+
+    @foreach (var item in ViewBag.lstNamesOfMonth)
+    {
+        if (i != item.numbDay)
+        {
+            <br>
+            <h5 style="background-color:lightgoldenrodyellow">@item.captionDayOfMonth + " именины праздуют: "</h5>
+            i = item.numbDay;
+        }
+        if (item.sex == "М" || item.sex == "м")
+        {
+            <a asp-area="" asp-controller="NamesInfo" asp-action="Index" asp-route-name=@item.name> 
+             <button style="background-color:lightblue"; class="tablinks">@item.name</button>
+            </a>
+        }
+        else
+        {
+            <a asp-area="" asp-controller="NamesInfo" asp-action="Index" asp-route-name=@item.name> 
+             <button style="background-color:lightpink"; class="tablinks">@item.name</button>
+            </a>
+        }
+    }
+}

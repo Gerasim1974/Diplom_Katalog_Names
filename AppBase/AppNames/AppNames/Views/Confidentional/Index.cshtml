@@ -1,0 +1,33 @@
+﻿@model ConfidentionalModel
+@{
+    ViewData["ConfidentionalModel"] = "ConfidentionalModel";
+}
+@{
+    <h1>авторизация</h1>
+    @using (Html.BeginForm("Index", "Confidentional", FormMethod.Post))
+    {
+    <p>
+                @Html.LabelFor(m=>m.confidentionalToView.RegForm,"создать аккаунт") 
+                @Html.CheckBoxFor(m=>m.confidentionalToView.RegForm, "Создать") 
+    </p>
+    <p>
+                @Html.LabelFor(m=>m.confidentionalToView.login,"Логин")
+                <br/>
+                @Html.EditorFor(m=>m.confidentionalToView.login)
+    </p>
+    <p>
+                @Html.LabelFor(m=>m.confidentionalToView.login,"Пароль")
+                <br/>
+                @Html.PasswordFor(m=>m.confidentionalToView.password)
+    </p>
+    <p>
+                @Html.LabelFor(m=>m.confidentionalToView.email,"Email (только при создании аккаунта)") 
+                <br>
+                @Html.EditorFor(m=>m.confidentionalToView.email)        
+    </p>
+    <p><input type="submit" value="Применить" /></p>
+    <h3 style="color:Green">@Html.DisplayTextFor(m=>m.confidentionalToView.StrStatusFooter)</h3>
+    }       
+}
+
+         

@@ -1,0 +1,19 @@
+﻿@model VerificationModel
+@{
+    ViewData["VerificationModel"] = "VerificationModel";
+}
+@{
+    <h1>Информация предложенная пользователями (требует проверки)</h1>
+    @foreach (var item in Model.verification)
+    {
+     <h4 style="background-color:wheat"> @item.name </h4> 
+     string s = Convert.ToString(@item.dInsert) + " пользователь "+@item.login+" предложил следующие изменения:"; 
+     <h5>@s</h5>
+        <span>@item.Notice</span>
+        if (!String.IsNullOrWhiteSpace(@item.urlAdress))
+        {
+            var link = @item.urlAdress;
+            <tr><h6><a href="@link">ссылка...</a></h6></tr>
+        }
+    }
+}
