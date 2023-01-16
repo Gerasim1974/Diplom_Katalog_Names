@@ -1,9 +1,7 @@
 ﻿using AppNames.Classes;
 using AppNames.Sql;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
+
 namespace AppNames.SqlClass
 {
     public class VerificationSql

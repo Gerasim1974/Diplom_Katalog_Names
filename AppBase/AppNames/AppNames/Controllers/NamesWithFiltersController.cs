@@ -1,18 +1,13 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using AppNames.Classes;
 using AppNames.SqlClass;
 using AppNames.Models;
-using System;
-using System.Linq;
-using System.ComponentModel.DataAnnotations;
 
 namespace AppNames.Controllers
 {
     public class NamesWithFiltersController : Controller
     {
         public static NamesWithFiltersModel _namesFiltersModel = new NamesWithFiltersModel();
-        //public NamesWithFiltersSql namesWithFiltersSql = new NamesWithFiltersSql();
 
         [HttpGet]
         public async Task<IActionResult> Index()

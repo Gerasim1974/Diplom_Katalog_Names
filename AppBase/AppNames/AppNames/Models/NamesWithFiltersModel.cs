@@ -1,7 +1,4 @@
 ﻿using AppNames.Classes;
-using System;
-using System.Linq;
-using System.ComponentModel.DataAnnotations;
 
 namespace AppNames.Models
 {

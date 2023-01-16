@@ -1,10 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
-using System;
-using System.Data;
-using System.Threading.Tasks;
-using AppNames.Models;
+﻿using AppNames.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using AppNames.Classes;
 using AppNames.SqlClass;
 
@@ -27,7 +22,6 @@ namespace AppNames.Controllers
             NameInfoSql namesInfoSql = new NameInfoSql();
             NamesInfoModel namesInfoModel = new NamesInfoModel();
             Names namesInfo = new Names();
-            //namesInfo.angelDay = new List<string>();
             namesInfo = await namesInfoSql.ReadNames(_Name);
             string sAngelDays = "";
             sAngelDays = await namesInfoSql.ReadAngelDays(namesInfo.name, "#");

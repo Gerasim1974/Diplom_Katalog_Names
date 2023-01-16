@@ -1,10 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
-using System;
-using System.Data;
-using System.Threading.Tasks;
-using AppNames.Models;
+﻿using AppNames.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using AppNames.Classes;
 using AppNames.SqlClass;
 

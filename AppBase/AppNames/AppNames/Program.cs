@@ -1,10 +1,4 @@
-using Microsoft.Data.SqlClient;
-using System;
-using System.Data;
-using System.Threading.Tasks;
 using AppNames.Sql;
-using AppNames.Models;
-using AppNames.Classes;
 
 namespace AppNames
 {
@@ -45,10 +39,6 @@ namespace AppNames
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
-
-            app.MapControllerRoute(
-                name: "Month",
-                pattern: "{controller=Month}/{action=Index}/{NumbMonth?}");
 
             app.Run();
 
