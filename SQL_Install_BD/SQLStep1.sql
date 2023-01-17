@@ -11,7 +11,7 @@ CREATE TABLE DBO.DaysOfYears(DaysOfYearsId BIGINT NOT NULL PRIMARY KEY IDENTITY(
 GO
 
 CREATE TABLE DBO.Names(NamesId BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
-     [Name] VARCHAR(150) NOT NULL, Sex CHAR(1) NOT NULL,
+     [Name] NVARCHAR(150) NOT NULL, Sex NCHAR(1) NOT NULL,
 	 UNIQUE([Name], Sex))
 GO
 
@@ -22,8 +22,8 @@ CREATE TABLE DBO.DaysOrtodoxChristians( DaysOrtodoxChristiansId BIGINT NOT NULL 
 GO
 
 CREATE TABLE [dbo].[NamesToEdit](NamesToEditId BIGINT IDENTITY(1,1) NOT NULL PRIMARY KEY,
-	[Names] varchar(150) NOT NULL, [urlAdress] varchar(4000), [Notice] varchar(4000),
-	[Login] varchar(150) NOT NULL, [dateInsert] datetime NOT NULL)
+	[Names] nvarchar(150) NOT NULL, [urlAdress] nvarchar(4000), [Notice] nvarchar(4000),
+	[Login] nvarchar(150) NOT NULL, [dateInsert] datetime NOT NULL)
 GO
 
 --STEP 2
@@ -40,8 +40,8 @@ GO
 CREATE PROCEDURE AddToOrtodoxChristiansCatalogBase
 	@MonthNumb smallint,
 	@DaysNumb smallint,
-	@Name varchar(50),
-	@Sex char(1)
+	@Name nvarchar(50),
+	@Sex nchar(1)
 AS
 BEGIN
 	SET NOCOUNT ON;
@@ -95,13 +95,13 @@ GO
 CREATE PROCEDURE dbo.AddListToOrtodoxChristiansCatalogBase 
 	@MonthNumb smallint,
 	@DaysNumb smallint,
-	@Names varchar(1500),
-	@Sex char(1)
+	@Names nvarchar(1500),
+	@Sex nchar(1)
 AS
 BEGIN
 	SET NOCOUNT ON;
 
-    DECLARE @sItem VARCHAR(100) = ''
+    DECLARE @sItem NVARCHAR(100) = ''
     DECLARE @I SMALLINT = 1
     WHILE @I <= LEN(@Names)
     BEGIN
@@ -126,8 +126,8 @@ GO
 
 DECLARE @MonthNumb SMALLINT
 DECLARE @DaysNumb SMALLINT
-DECLARE @ListName VARCHAR(1500) --ÐÀÇÄÅËÈÒÅËÜ ","
-DECLARE @Sex char(1)
+DECLARE @ListName NVARCHAR(1500) --ÐÀÇÄÅËÈÒÅËÜ ","
+DECLARE @Sex nchar(1)
 
 --####################################################
 -- ßÍÂÀÐÜ

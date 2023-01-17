@@ -3,23 +3,23 @@ GO
 
 --ПРОИСХОЖДЕНИЕ греч. греческое
 CREATE TABLE DBO.Origin(OriginId BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
-             NameOrigin VARCHAR(50),
-			 FullNameOrigin VARCHAR(100),
+             NameOrigin NVARCHAR(50),
+			 FullNameOrigin NVARCHAR(100),
 			 UNIQUE(NameOrigin))
 INSERT INTO DBO.Origin(NameOrigin, FullNameOrigin) VALUES('неизвестно','неизвестно')
 --FullNameOrigin заполнится UODATE - ом
 
 --ОРЛИНАЯ ОРЕЛ   AbstractNamе ПОКА НЕ ЗАПОЛНЯЕМ, ЕСЛИ ВРЕМЯ БУДЕТ
 CREATE TABLE DBO.Denotation(DenotationId BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
-                   DetailName VARCHAR(500), 
-				   AbstractNamе VARCHAR(250),
+                   DetailName NVARCHAR(500), 
+				   AbstractNamе NVARCHAR(250),
 				   UNIQUE(DetailName))
 INSERT INTO DBO.Denotation(DetailName, AbstractNamе) VALUES('неизвестно','неизвестно')
 
 --ссылка где в нете есть инфа
 CREATE TABLE DBO.UrlReference(UrlReferenceId BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
                      NamesId BIGINT NOT NULL, 
-                     ReferenceUrl VARCHAR(8000))
+                     ReferenceUrl NVARCHAR(4000))
 
 --У ОДНОГО ИМЕНИ МОЖЕТ БЫТЬ НЕСКОЛЬКО ЗНАЧЕНИЙ И НЕСКОЛЬКО ССЫЛОК
 CREATE TABLE DBO.NamesAdditionalInfo(NamesAdditionalInfoId BIGINT NOT NULL PRIMARY KEY IDENTITY(1,1),
@@ -35,9 +35,9 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE PROCEDURE DBO.AdditionalFullInfoNames
-     @Name VARCHAR(150),
-	   @NameOrigin VARCHAR(50),
-     @DetailName VARCHAR(500)
+     @Name NVARCHAR(150),
+	   @NameOrigin NVARCHAR(50),
+     @DetailName NVARCHAR(500)
 AS
 BEGIN
 
@@ -96,8 +96,8 @@ GO
 
 
 CREATE PROCEDURE DBO.AddUrlReference
-     @Name VARCHAR(150),
-     @ReferenceUrl VARCHAR(8000)
+     @Name NVARCHAR(150),
+     @ReferenceUrl NVARCHAR(4000)
 AS
 BEGIN
    SET NOCOUNT ON;

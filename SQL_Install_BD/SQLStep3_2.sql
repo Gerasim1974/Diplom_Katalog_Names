@@ -1,8 +1,8 @@
-DECLARE @Name VARCHAR(50)
-DECLARE @NameOrigin VARCHAR(50)
-DECLARE @DetailName VARCHAR(500)
+DECLARE @Name NVARCHAR(50)
+DECLARE @NameOrigin NVARCHAR(50)
+DECLARE @DetailName NVARCHAR(500)
 
-DECLARE @Url VARCHAR(8000)
+DECLARE @Url NVARCHAR(4000)
 
 --#############################################################
 SET @Name = 'Берта'
